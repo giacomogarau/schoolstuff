@@ -1,0 +1,13 @@
+Produrre un’applicazione web che permette le seguenti interazioni con il database Musei:
+
+visualizzare le opere d'arte, ciascuna con il nome del suo autore e il nome del museo in cui e' conservata (fatto)
+
+inserire una nuova opera d'arte, controllando che siano rispettati i vincoli di integrita' referenziale (fatto)
+
+effettuare ricerche delle opere basandosi sul titolo oppure sull'autore oppure sul museo nel quale sono conservate (fatto)
+
+modificare lo script in modo che le ricerche richieste al punto precedente possano essere combinate (fatto)
+
+spostare un'opera da un museo ad un'altro solo se il museo di destinazione si trova in un'altra città (fatto)
+
+aggiungere un nuovo museo (fatto)
