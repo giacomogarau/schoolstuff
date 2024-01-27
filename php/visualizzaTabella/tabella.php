@@ -2,7 +2,7 @@
 if(isset($_POST["database"]) && !empty($_POST["database"])){
 	echo "Seleziona una tabella<br>";
 	$conn=mysqli_connect("localhost","root","widenius") or die("connect");
-	$query="use ".$_POST["database"];
+	$query="use ".mysqli_real_escape_string($conn,$_POST["database"]);
 	mysqli_query($conn,$query) or die("query1");
 	$list=mysqli_query($conn,"show tables") or die("query2");
 	echo '<form method="POST" action="tabella2.php">';

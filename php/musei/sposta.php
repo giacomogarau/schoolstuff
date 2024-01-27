@@ -27,9 +27,9 @@
 	mysqli_free_result($ris);
 
     if ((!empty($_GET["idOpera"]) || !isset($_GET["idMuseo"])) && !empty($_GET["idOpera"]) && !empty($_GET["idMuseo"])) {
-        $opera = $_GET["idOpera"];
+        $opera = mysqli_real_escape_string($conn,$_GET["idOpera"]);
         $pos=array_search($opera, $idOpera);
-        $museo = $_GET["idMuseo"];
+        $museo = mysqli_real_escape_string($conn,$_GET["idMuseo"]);
         $pos2=array_search($museo, $idMusei);
         if ($pos == $pos2) {
             die("Stai spostando l'opera allo stesso museo");

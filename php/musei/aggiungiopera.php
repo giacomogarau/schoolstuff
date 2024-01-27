@@ -28,9 +28,9 @@
 	}
 	mysqli_free_result($risMusei);
 	if(isset($_GET["nomeOpera"]) && isset($_GET["idAttore"]) && isset($_GET["idMuseo"]) && !empty($_GET["nomeOpera"]) && !empty($_GET["idAttore"]) && !empty($_GET["idMuseo"])){
-		$nomeOpera=$_GET["nomeOpera"];
-		$idAttore=$_GET["idAttore"];
-		$idMuseo=$_GET["idMuseo"];
+		$nomeOpera=mysqli_real_escape_string($conn,$_GET["nomeOpera"]);
+		$idAttore=mysqli_real_escape_string($conn,$_GET["idAttore"]);
+		$idMuseo=mysqli_real_escape_string($conn,$_GET["idMuseo"]);
 		$query='insert into opere(titolo,museo,autore) values("'.$nomeOpera.'","'.$idMuseo.'","'.$idAttore.'")';
 		//echo $query;
 		mysqli_query($conn,$query) or die("query");

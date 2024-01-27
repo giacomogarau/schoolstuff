@@ -15,10 +15,9 @@
 <body>
     <?php
     if (!empty($_GET["tipoRicerca"]) && !empty($_GET["nome"]) && isset($_GET["tipoRicerca"]) && isset($_GET["nome"])) {
-        $tipoRicerca = $_GET["tipoRicerca"];
-        $nome = $_GET["nome"];
-
         $conn = mysqli_connect("localhost", "root", "") or die("connect");
+        $tipoRicerca = mysqli_real_escape_string($conn,$_GET["tipoRicerca"]);
+        $nome = mysqli_real_escape_string($conn,$_GET["nome"]);
         mysqli_query($conn, "use musei") or die("use");
         $query = 'select titolo,artisti.nome,musei.nome from opere,artisti,musei where museo=musei.id && autore=artisti.id &&  ' . $tipoRicerca . ' like "%' . $nome . '%"';
         //echo $query;

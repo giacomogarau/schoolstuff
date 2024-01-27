@@ -15,12 +15,13 @@
 <body>
     <?php
     if (isset($_GET["opera"]) && isset($_GET["autore"]) && isset($_GET["museo"])) {
-        $opera = $_GET["opera"];
-        $autore = $_GET["autore"];
-        $museo = $_GET["museo"];
+        $conn = mysqli_connect("localhost", "root", "") or die("connect");
+        $opera = mysqli_real_escape_string($conn,$_GET["opera"]);
+        $autore = mysqli_real_escape_string($conn,$_GET["autore"]);
+        $museo = mysqli_real_escape_string($conn,$_GET["museo"]);
         
 
-        $conn = mysqli_connect("localhost", "root", "") or die("connect");
+
         mysqli_query($conn, "use musei") or die("use");
         $query = 'select titolo,artisti.nome,musei.nome from opere,artisti,musei where museo=musei.id && autore=artisti.id && titolo like "%'.$opera.'%" && artisti.nome like "%'.$autore.'%" && musei.nome like "%'.$museo.'%"' ;
         //echo $query;

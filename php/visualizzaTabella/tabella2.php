@@ -10,8 +10,8 @@ td, th{
 </head>
 <?php
 if(isset($_POST["nomedb"]) && !empty($_POST["nomedb"]) && isset($_POST["tabella"]) && !empty($_POST["tabella"])){
-	$nomedb=$_POST["nomedb"];
-	$tabella=$_POST["tabella"];
+	$nomedb=mysqli_real_escape_string($conn,$_POST["nomedb"]);
+	$tabella=mysqli_real_escape_string($conn,$_POST["tabella"]);
 	$conn=mysqli_connect("localhost","root","widenius") or die("connect");
 	$query="use ".$nomedb;
 	mysqli_query($conn,$query) or die("query1");
